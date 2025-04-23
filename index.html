@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Éclat de Champagne</title>
+  <title>MURMUR</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;600&display=swap');
     body {
@@ -90,6 +90,179 @@
       font-size: 1.1rem;
       color: #5f4c3d;
     }
+    <style>
+  .carousel-wrapper {
+    max-width: 1000px;
+    margin: 4rem auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .carousel-header {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #9d7156;
+    margin: 2rem 0 1rem;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .carousel-slide h3 {
+    font-size: 1.2rem;
+    color: #7a5e48;
+    margin-bottom: 0.5rem;
+  }
+
+  .carousel-slide p {
+    color: #5f4c3d;
+    font-size: 1rem;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .carousel-button {
+    background: #9d7156;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    margin: 0 0.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .carousel-button:hover {
+    background: #7a5e48;
+  }
+
+  .carousel-dots {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .dot.active {
+    background-color: #9d7156;
+  }
+</style>
+
+<div class="carousel-header">DISCOVER HOW MURMUR FITS YOUR LIFESTYLE</div>
+
+<div class="carousel-wrapper">
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-slide">
+      <h3>✨ Celebrating with your baby on board?</h3>
+      <p>Pregnancy is powerful — and MURMUR lets you raise a toast with elegance, without a drop of alcohol.</p>
+    </div>
+    <div class="carousel-slide">
+      <h3>🌿 Wellness first? No problem.</h3>
+      <p>Sober-curious? Watching calories? MURMUR pairs with your lifestyle — vibrant, conscious, and full of sparkle.</p>
+    </div>
+    <div class="carousel-slide">
+      <h3>💚 Healing and recovering?</h3>
+      <p>We see you. MURMUR is for your journey — restoring ritual, without the risk.</p>
+    </div>
+    <div class="carousel-slide">
+      <h3>📱 Gen Z, this one’s for you</h3>
+      <p>Bold, real, and clean. MURMUR reflects your values and your vibe — no alcohol, no compromises, all class.</p>
+    </div>
+    <div class="carousel-slide">
+      <h3>🧓 Gracefully aging?</h3>
+      <p>Lower alcohol tolerance doesn’t mean less joy. MURMUR gives you the flavor, the feel — without the effects.</p>
+    </div>
+    <div class="carousel-slide">
+      <h3>💪 Fit and fabulous?</h3>
+      <p>Enjoy post-workout pleasure without compromise. MURMUR matches your health goals with finesse.</p>
+    </div>
+    <div class="carousel-slide">
+      <h3>🕌 Celebrating with care?</h3>
+      <p>Our zero-alcohol philosophy honors every belief. With MURMUR, the table is always inclusive — and elegant.</p>
+    </div>
+    <div class="carousel-slide">
+      <h3>🚗 Driving tonight?</h3>
+      <p>No more sipping soda while others toast. MURMUR lets you be part of the cheers — stylishly and safely.</p>
+    </div>
+  </div>
+
+  <div class="carousel-controls">
+    <button class="carousel-button" onclick="prevSlide()">← Prev</button>
+    <button class="carousel-button" onclick="nextSlide()">Next →</button>
+  </div>
+
+  <div class="carousel-dots" id="carouselDots"></div>
+</div>
+
+<script>
+  const track = document.getElementById('carouselTrack');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dotsContainer = document.getElementById('carouselDots');
+  let index = 0;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const updateDots = () => {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+  };
+
+  const goToSlide = (i) => {
+    index = i;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    updateDots();
+  };
+
+  const nextSlide = () => {
+    index = (index + 1) % slides.length;
+    goToSlide(index);
+  };
+
+  const prevSlide = () => {
+    index = (index - 1 + slides.length) % slides.length;
+    goToSlide(index);
+  };
+
+  // Auto Slide
+  setInterval(nextSlide, 7000);
+</script>
+
+  
     .footer {
       background-color: #3e3733;
       color: #f2ede8;
@@ -104,7 +277,7 @@
 </head>
 <body>
   <header>
-    <h1>Éclat de Champagne</h1>
+    <h1>MURMUR</h1>
     <p>Rooted in tradition, reimagined for a mindful future — naturally sparkling, aged on lees, and redefined without alcohol.</p>
   </header>
 
@@ -118,10 +291,10 @@
   </div>
 
   <div class="section">
-    <img src="images/becca069-162c-4657-81f3-ca7f802b761f.png" alt="Elegant Éclat visuals">
+    <img src="images/becca069-162c-4657-81f3-ca7f802b761f.png" alt="Elegant visuals">
     <div class="section-content">
       <h2>Who We Are</h2>
-      <p>Founded by Artem Buniakov — oenologist, wine buyer, and luxury wine tourism expert — Éclat de Champagne is a brand that redefines how we celebrate, by merging finesse with a modern alcohol-free lifestyle. A sensory storyteller with experience in both traditional winemaking and innovation, Artem built Éclat to be as poetic as it is professional.</p>
+      <p>Founded by Artem Buniakov — oenologist, wine buyer, and luxury wine tourism expert — MURMUR is a brand that redefines how we celebrate, by merging finesse with a modern alcohol-free lifestyle. A sensory storyteller with experience in both traditional winemaking and innovation, Artem built MURMUR to be as poetic as it is professional.</p>
     </div>
   </div>
 
@@ -129,30 +302,54 @@
     <img src="images/Celebrate Life with Our Non-Alcoholic Wine.png" alt="Celebrate visual">
     <div class="section-content">
       <h2>Our Vision</h2>
-      <p>We envision Éclat as the centerpiece of contemporary celebrations — chic, elegant, and inclusive. We bring the same complexity and joy as fine Champagne, through delicate fermentation and refined craftsmanship, with none of the alcohol. Every bottle is a gentle revolution.</p>
+      <p>We envision MURMUR as the centerpiece of contemporary celebrations — chic, elegant, and inclusive. We bring the same complexity and joy as fine Champagne, through delicate fermentation and refined craftsmanship, with none of the alcohol. Every bottle is a gentle revolution.</p>
     </div>
   </div>
 
-  <!-- NEW IMAGE SECTION 1 -->
   <div class="section">
     <img src="images/cheers.png" alt="Cheers icon">
     <div class="section-content">
       <h2>Celebrate Together</h2>
-      <p>Every clink of the glass is a moment shared — Éclat brings people together without compromise. Experience the joy of celebration, your way.</p>
+      <p>Every clink of the glass is a moment shared — MURMUR brings people together without compromise. Experience the joy of celebration, your way.</p>
     </div>
   </div>
 
-  <!-- NEW IMAGE SECTION 2 -->
   <div class="section">
     <img src="images/murmur_moodboard.png" alt="Murmur Moodboard">
     <div class="section-content">
       <h2>Visual Harmony</h2>
-      <p>Inspired by slow living and whispered elegance, Murmur is our quiet revolution — a vision board of taste, time, and tranquility in every bottle.</p>
+      <p>Inspired by slow living and whispered elegance, MURMUR is our quiet revolution — a vision board of taste, time, and tranquility in every bottle.</p>
+    </div>
+  </div>
+
+  <!-- Newsletter Section -->
+  <div style="background: #f4f2ef; padding: 3rem 2rem; text-align: center;">
+    <h2 style="font-family: 'Playfair Display', serif; color: #9d7156;">Be the First to Know</h2>
+    <p style="color: #5f4c3d;">Join our waitlist to get early access, exclusive tastings, and MURMUR updates.</p>
+    <form style="margin-top: 1rem;">
+      <input type="email" placeholder="Your email address" style="padding: 0.7rem 1rem; border: 1px solid #ccc; border-radius: 6px; width: 250px; max-width: 80%;">
+      <button style="padding: 0.7rem 1.2rem; margin-left: 0.5rem; background-color: #b0896b; border: none; color: white; border-radius: 6px; cursor: pointer;">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- Lifestyle Fit Section -->
+  <div style="text-align: center; margin: 4rem auto;">
+    <h2 style="font-family: 'Playfair Display', serif; color: #9d7156;">DISCOVER HOW MURMUR FITS YOUR LIFESTYLE</h2>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1000px; margin: 2rem auto;">
+    <div style="flex: 1 1 300px; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+      <h3 style="color: #c2872e;">✨ Celebrating with your baby on board?</h3>
+      <p style="color: #5f4c3d;">Pregnancy is powerful — and MURMUR lets you raise a toast with elegance, without a drop of alcohol. Share the joy, safely and beautifully.</p>
+    </div>
+    <div style="flex: 1 1 300px; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+      <h3 style="color: #7a5e48;">🌿 Wellness first? No problem.</h3>
+      <p style="color: #5f4c3d;">Sober-curious? Watching calories? MURMUR pairs with your lifestyle — vibrant, conscious, and full of life.</p>
     </div>
   </div>
 
   <footer class="footer">
-    <p>&copy; 2025 Éclat de Champagne – Paris, France</p>
+    <p>&copy; 2025 MURMUR – Paris, France</p>
     <p>Crafted by Artem Buniakov – Wine & Non-Alcoholic Experience Expert</p>
   </footer>
 </body>
